@@ -1,7 +1,7 @@
 // Queues
 // first in first out
 
-function createQueue() {
+const createQueue = function() {
   const queue = [];
   return {
     // add or enqueue
@@ -31,7 +31,7 @@ function createQueue() {
 }
 
 const q = createQueue();
-console.log(q.isEmpty());
+// console.log(q.isEmpty());
 
 q.enqueue('make an egghead lesson');
 q.enqueue('help others learn');
@@ -43,6 +43,7 @@ q.dequeue();
 
 // ['be happy', 'help others learn']
 
-console.log(q.peek());
+// console.log(q.peek());
+// console.log(q.isEmpty());
 
-console.log(q.isEmpty());
+exports.createQueue = createQueue;
