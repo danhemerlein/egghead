@@ -15,17 +15,28 @@ const createQueue = function() {
       // pop removes the last item of an array
       return queue.pop(item)
     },
+
     // peek
     peek() {
       return queue[queue.length - 1];
     },
+
+    peekTwo() {
+      return queue[queue.length - 2];
+    },
+
     // length - need to use a getter function here
     get length() {
       return queue.length;
     },
+
     // isEmpty
     isEmpty() {
       return queue.length === 0;
+    },
+
+    show() {
+      return queue;
     }
   }
 }

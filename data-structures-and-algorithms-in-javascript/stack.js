@@ -30,9 +30,15 @@ function createStack() {
     // isEmpty
     isEmpty() {
       return array.length === 0;
+    },
+
+    show() {
+      return array;
     }
   }
 }
+
+exports.createStack = createStack;
 
 const lowerBodyStack = createStack();
 
@@ -44,5 +50,5 @@ lowerBodyStack.push('shoes');
 lowerBodyStack.pop();
 lowerBodyStack.pop();
 
-console.log(lowerBodyStack.peek());
-console.log(lowerBodyStack.length);
+// console.log(lowerBodyStack.peek());
+// console.log(lowerBodyStack.length);
