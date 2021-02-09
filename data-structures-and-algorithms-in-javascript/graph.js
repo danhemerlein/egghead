@@ -87,6 +87,34 @@ function createGraph(directed = false) {
         })
 
       }
+    },
+
+    // Depth first search
+    // Graph search algorithim that explores as far down as it can, before climbing back up and going down another path
+    // starting node key is which node in the graph to start the search from and a visiting node function to be called as we visit each node for the first time
+    depthFirstSearch(startingNodeKey, visitFn) {
+      const startingNode = this.getNode(startingNodeKey);
+
+      const visited = nodes.reduce ((acc, node) => {
+        acc[node.key] = false
+        return acc
+      }, {})
+
+      // recursion - if there's another road to go down we need to explore that one until we reach a dead end
+
+      function explore(node) {
+        if (visited[node.key]) {
+          return;
+        }
+
+        visitFn(node);
+        visited[node.key] = true;
+
+        node.neighbors.forEach(node => explore(node));
+      }
+
+      explore(startingNode);
+
     }
   }
 }
@@ -113,7 +141,6 @@ graph.addEdge('Beans', 'Noah');
 
 console.log(graph.print());
 
-const graph2 = createGraph(true);
 const nodes = ['a', 'b','c','d','e','f'];
 const edges = [
   ['a','b'],
@@ -126,6 +153,8 @@ const edges = [
   ['d','e'],
 ];
 
+const graph2 = createGraph(true);
+
 nodes.forEach(node => {
   graph2.addNode(node)
 });
@@ -135,5 +164,21 @@ edges.forEach(nodes => {
 });
 
 graph2.breadthFirst('a', node => {
+  console.log(node.key);
+});
+
+console.log('//////////// DEPTH FIRST SEARCH ///////////////');
+
+const graph3 = createGraph(true);
+
+nodes.forEach(node => {
+  graph3.addNode(node)
+});
+
+edges.forEach(nodes => {
+  graph3.addEdge(...nodes)
+});
+
+graph3.depthFirstSearch('a', node => {
   console.log(node.key);
 })
