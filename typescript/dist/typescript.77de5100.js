@@ -118,7 +118,25 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.ts":[function(require,module,exports) {
-console.log('hello from typescript');
+"use strict";
+
+console.log('hello from typescript'); // ? after parameter means optional
+
+function greet(_ref) {
+  var greeting = _ref.greeting,
+      name = _ref.name;
+  return "".concat(greeting, ", ").concat(name);
+}
+
+var message = greet({
+  greeting: "Hello"
+});
+var danMessage = greet({
+  greeting: "Howdy",
+  name: "Dan"
+});
+console.log(message);
+console.log(danMessage);
 },{}],"../../../../../.nvm/versions/node/v16.13.1/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
